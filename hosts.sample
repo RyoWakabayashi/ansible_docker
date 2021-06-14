@@ -1,0 +1,7 @@
+[target-servers]
+target-server
+
+[all:vars]
+ansible_ssh_user=xxx
+ansible_ssh_pass=xxx
+ansible_sudo_pass=xxx

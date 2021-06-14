@@ -1,0 +1,13 @@
+version: "2.3"
+
+services:
+  ansible:
+    build: .
+    hostname: ansible
+    container_name: ansible
+    environment:
+      - HTTP_PROXY
+      - HTTPS_PROXY
+    volumes:
+      - ./playbooks:/playbooks
+    tty: true

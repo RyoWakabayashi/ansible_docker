@@ -1,0 +1,7 @@
+- name: docker
+  hosts: target-servers
+  become: yes
+  vars:
+    http_proxy: "{{ lookup('env', 'HTTP_PROXY') }}"
+  roles:
+    - common

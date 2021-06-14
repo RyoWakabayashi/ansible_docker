@@ -1,0 +1,22 @@
+- name: Add proxy setting to yum config
+  lineinfile:
+    dest: /etc/yum.conf
+    line: "proxy={{http_proxy}}"
+- name: Add proxy setting to root bashrc
+  lineinfile:
+    dest: /root/.bashrc
+    line: "{{ item }}"
+  with_items:
+    - "export HTTP_PROXY={{http_proxy}}"
+    - "export http_proxy={{http_proxy}}"
+    - "export HTTPS_PROXY={{http_proxy}}"
+    - "export https_proxy={{http_proxy}}"
+    - "export FTP_PROXY={{http_proxy}}"
+    - "export ftp_proxy={{http_proxy}}"
+- name: Add proxy setting to curl on OS
+  template:
+    src: curlrc
+    dest: /etc/curlrc
+    owner: root
+    group: root
+    mode: 0644
